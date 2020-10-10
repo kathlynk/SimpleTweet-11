@@ -21,7 +21,7 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 		setContentView(R.layout.activity_login);
 
 		final SampleModel sampleModel = new SampleModel();
-		sampleModel.setName("CodePath");
+		sampleModel.setName("SimpleTweet");
 
 		sampleModelDao = ((TwitterApp) getApplicationContext()).getMyDatabase().sampleModelDao();
 

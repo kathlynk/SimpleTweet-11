@@ -37,4 +37,14 @@
         tools:text="Hi guys, this is my tweet!!"
         android:autoLink="all"
         android:linksClickable="true" />
+
+    <TextView
+        android:id="@+id/tvPostTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="5dp"
+        tools:text="7 hr" />
 </RelativeLayout>

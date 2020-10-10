@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
-
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -66,16 +65,19 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageView ivProfileImage;
         TextView tvBody;
         TextView tvScreenName;
+        TextView tvPostTime;
 
         public ViewHolder(@Nonnull View itemView) {
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             tvBody = itemView.findViewById(R.id.tvBody);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
+            tvPostTime = itemView.findViewById(R.id.tvPostTime);
         }
 
         public void bind(Tweet tweet) {
             tvBody.setText(tweet.body);
+            tvPostTime.setText(tweet.relativeTimeAgo);
             tvScreenName.setText(tweet.user.screenName);
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
         }
