@@ -3,6 +3,7 @@ package com.codepath.apps.restclienttemplate;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.view.View;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -30,5 +31,13 @@ public class DetailActivity extends AppCompatActivity {
                 .load(tweet.user.profileImageUrl)
                 .placeholder(R.drawable.ic_launcher)
                 .into(binding.ivProfileImage);
+
+        if (tweet.mediaUrl != null) {
+            Glide.with(getApplicationContext())
+                    .load(tweet.mediaUrl)
+                    .placeholder(R.drawable.ic_launcher)
+                    .into(binding.ivMedia);
+            binding.ivMedia.setVisibility(View.VISIBLE);
+        }
     }
 }

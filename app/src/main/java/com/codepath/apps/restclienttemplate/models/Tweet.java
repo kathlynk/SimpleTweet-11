@@ -27,6 +27,7 @@ public class Tweet {
     public String relativeTimeAgo;
     public long id;
     public User user;
+    public String mediaUrl;
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();
@@ -42,10 +43,9 @@ public class Tweet {
         tweet.id = jsonObject.getLong("id");
 
         if (jsonObject.getJSONObject("entities").has("media")) {
-            JSONArray media = jsonObject.getJSONObject("entities").getJSONArray("media");
-            for (int i = 0; i < media.length(); i++) {
-                Log.i("Media Found:", i + media.getJSONObject(i).getString("type"));
-            }
+            JSONObject media = jsonObject.getJSONObject("entities").getJSONArray("media").getJSONObject(0);
+            Log.i("Media Found:", media.toString());
+            tweet.mediaUrl = media.getString("media_url_https");
         }
 
         return tweet;
