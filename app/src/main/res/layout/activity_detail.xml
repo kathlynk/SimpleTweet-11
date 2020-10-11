@@ -1,0 +1,74 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#001D33">
+
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".DetailActivity">
+
+            <ImageView
+                android:id="@+id/ivProfileImage"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:transitionName="profileImage"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/ivProfileImage"
+                android:textColor="#BFBFBF"
+                android:textSize="26sp"
+                tools:text="Nicolas Pascal LaGamma" />
+
+            <TextView
+                android:id="@+id/tvScreenName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/tvName"
+                android:layout_below="@id/tvName"
+                android:textColor="#BFBFBF"
+                android:textSize="25sp"
+                tools:text="\@NicolasLaGamma" />
+
+            <TextView
+                android:id="@+id/tvBody"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvScreenName"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="20dp"
+                android:autoLink="all"
+                android:linksClickable="true"
+                android:textColor="#BFBFBF"
+                android:textSize="20sp"
+                tools:text="Hi guys, this is my tweet!!" />
+
+            <TextView
+                android:id="@+id/tvPostTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvBody"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#BFBFBF"
+                android:textSize="16sp"
+                tools:text="7 hr" />
+
+        </RelativeLayout>
+    </ScrollView>
+</layout>

@@ -5,6 +5,7 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+
+@Parcel
 public class Tweet {
 
     private static final int SECOND_MILLIS = 1000;
@@ -27,7 +30,12 @@ public class Tweet {
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();
-        tweet.body = jsonObject.getString("text");
+
+        try {
+            tweet.body = "RT " + jsonObject.getJSONObject("retweeted_status").getString("full_text");
+        } catch (JSONException e) {  // Not a Retweet
+            tweet.body = jsonObject.getString("full_text");
+        }
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.relativeTimeAgo = getRelativeTimeAgo(tweet.createdAt);
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));

@@ -6,6 +6,7 @@ apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
     compileSdkVersion 28
+    dataBinding.enabled = true
 
     defaultConfig {
         applicationId "com.codepath.apps.restclienttemplate"
@@ -41,8 +42,6 @@ dependencies {
     implementation 'com.codepath.libraries:android-oauth-handler:2.2.0'
     implementation 'commons-codec:commons-codec:1.10'
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    // Glide for remote image loading
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     // Room for simple persistence with an ORM
@@ -51,4 +50,15 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation 'com.facebook.stetho:stetho:1.5.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+
+    // Glide for remote image loading
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    // Parceler for object serialization
+    implementation 'org.parceler:parceler-api:1.1.12'
+    annotationProcessor 'org.parceler:parceler:1.1.12'
+    implementation 'jp.wasabeef:glide-transformations:4.1.0'
+    // If you want to use the GPU Filters
+    implementation 'jp.co.cyberagent.android:gpuimage:2.0.4'
 }
