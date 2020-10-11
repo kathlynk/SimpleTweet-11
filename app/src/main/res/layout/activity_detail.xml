@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/ivProfileImage"
-                android:textColor="#BFBFBF"
+                android:textColor="@color/light_gray"
                 android:textSize="26sp"
                 tools:text="Nicolas Pascal LaGamma" />
 
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@id/tvName"
                 android:layout_below="@id/tvName"
-                android:textColor="#BFBFBF"
+                android:textColor="@color/light_gray"
                 android:textSize="25sp"
                 tools:text="\@NicolasLaGamma" />
 
@@ -54,7 +54,7 @@
                 android:layout_marginStart="20dp"
                 android:autoLink="all"
                 android:linksClickable="true"
-                android:textColor="#BFBFBF"
+                android:textColor="@color/light_gray"
                 android:textSize="20sp"
                 tools:text="Hi guys, this is my tweet!!" />
 
@@ -65,7 +65,7 @@
                 android:layout_below="@id/tvBody"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:textColor="#BFBFBF"
+                android:textColor="@color/light_gray"
                 android:textSize="16sp"
                 tools:text="7 hr" />
 

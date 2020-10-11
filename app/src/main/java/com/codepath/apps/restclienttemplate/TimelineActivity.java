@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +19,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class TimelineActivity extends AppCompatActivity {
 
@@ -61,6 +63,7 @@ public class TimelineActivity extends AppCompatActivity {
         rvTweets.setLayoutManager(layoutManager);
         rvTweets.setAdapter(adapter);
         DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(rvTweets.getContext(), layoutManager.getOrientation());
+        mDividerItemDecoration.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(rvTweets.getContext(), R.drawable.divider)));
         rvTweets.addItemDecoration(mDividerItemDecoration);
 
         scrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {

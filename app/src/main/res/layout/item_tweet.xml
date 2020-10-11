@@ -27,7 +27,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="0dp"
             android:layout_toEndOf="@+id/ivProfileImage"
-            android:textColor="#BFBFBF"
+            android:textColor="@color/light_gray"
             tools:text="NicolasLaGamma" />
 
         <com.codepath.apps.restclienttemplate.LinkifiedTextView
@@ -39,7 +39,7 @@
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@+id/ivProfileImage"
             tools:text="Hi guys, this is my tweet!!"
-            android:textColor="#BFBFBF"
+            android:textColor="@color/light_gray"
             android:autoLink="all"
             android:linksClickable="true" />
 
@@ -51,7 +51,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="5dp"
-            android:textColor="#BFBFBF"
+            android:textColor="@color/light_gray"
             tools:text="7 hr" />
     </RelativeLayout>
 </layout>

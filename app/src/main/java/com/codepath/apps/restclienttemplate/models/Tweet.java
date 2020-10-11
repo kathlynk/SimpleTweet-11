@@ -40,6 +40,14 @@ public class Tweet {
         tweet.relativeTimeAgo = getRelativeTimeAgo(tweet.createdAt);
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
         tweet.id = jsonObject.getLong("id");
+
+        if (jsonObject.getJSONObject("entities").has("media")) {
+            JSONArray media = jsonObject.getJSONObject("entities").getJSONArray("media");
+            for (int i = 0; i < media.length(); i++) {
+                Log.i("Media Found:", i + media.getJSONObject(i).getString("type"));
+            }
+        }
+
         return tweet;
     }
 
