@@ -5,7 +5,7 @@
     <RelativeLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:orientation="vertical"
         android:background="#001D33">
 
@@ -30,13 +30,13 @@
             android:textColor="#BFBFBF"
             tools:text="NicolasLaGamma" />
 
-        <TextView
+        <com.codepath.apps.restclienttemplate.LinkifiedTextView
             android:id="@+id/tvBody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvScreenName"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="8dp"
             android:layout_toEndOf="@+id/ivProfileImage"
             tools:text="Hi guys, this is my tweet!!"
             android:textColor="#BFBFBF"

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,7 +70,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivProfileImage;
-        TextView tvBody;
+        LinkifiedTextView tvBody;
         TextView tvScreenName;
         TextView tvPostTime;
         RelativeLayout container;
@@ -87,7 +86,9 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
         public void bind(final Tweet tweet) {
             tvBody.setText(tweet.body);
+            tvBody.setSingleLine();
             tvBody.setEllipsize(TextUtils.TruncateAt.END);
+
             tvPostTime.setText(tweet.relativeTimeAgo);
             tvScreenName.setText(tweet.user.screenName);
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
