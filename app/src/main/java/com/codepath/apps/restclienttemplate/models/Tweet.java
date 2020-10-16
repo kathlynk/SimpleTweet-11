@@ -35,7 +35,11 @@ public class Tweet {
         try {
             tweet.body = "RT " + jsonObject.getJSONObject("retweeted_status").getString("full_text");
         } catch (JSONException e) {  // Not a Retweet
-            tweet.body = jsonObject.getString("full_text");
+            try {
+                tweet.body = jsonObject.getString("full_text");
+            } catch (JSONException e2) { // No value for full_text
+                tweet.body = jsonObject.getString("text");
+            }
         }
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.relativeTimeAgo = getRelativeTimeAgo(tweet.createdAt);

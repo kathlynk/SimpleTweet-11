@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -8,20 +9,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import okhttp3.Headers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class TimelineActivity extends AppCompatActivity {
+
+    private final int REQUEST_CODE = 20;
 
     private static final String TAG = "TimelineActivity";
     TwitterClient client;
@@ -30,6 +37,42 @@ public class TimelineActivity extends AppCompatActivity {
     TweetsAdapter adapter;
     SwipeRefreshLayout swipeContainer;
     EndlessRecyclerViewScrollListener scrollListener;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        // must return true for menu to be displayed (Activity.java)
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.compose) {
+            // Compose icon has been selected
+            // navigate to the compose activity
+            Intent i = new Intent(this, ComposeActivity.class);
+            startActivityForResult(i, REQUEST_CODE);
+            return true; // return false to allow normal menu processing to proceed, true to consume it here
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            // Get data from the intent (tweet object)
+            assert data != null;
+            Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
+            // Update the RecyclerView with the tweet
+            // 1. Modify the data source of tweets
+            tweets.add(0, tweet);
+            // 2. Update the adapter
+            adapter.notifyItemInserted(0);
+            // scroll to top to show new tweet
+            rvTweets.smoothScrollToPosition(0);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
