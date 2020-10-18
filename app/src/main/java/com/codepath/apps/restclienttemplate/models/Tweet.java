@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate.models;
 
+import android.provider.ContactsContract;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -13,8 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 
 @Parcel
+@Entity(foreignKeys=@ForeignKey(entity=User.class, parentColumns="id", childColumns="userId"))
 public class Tweet {
 
     private static final int SECOND_MILLIS = 1000;
@@ -22,11 +30,20 @@ public class Tweet {
     private static final int HOUR_MILLIS = 60 * MINUTE_MILLIS;
     private static final int DAY_MILLIS = 24 * HOUR_MILLIS;
 
+    @ColumnInfo
     public String body;
+    @ColumnInfo
     public String createdAt;
+    @ColumnInfo
     public String relativeTimeAgo;
+    @PrimaryKey
+    @ColumnInfo
     public long id;
+    @ColumnInfo
+    public long userId;
+    @Ignore
     public User user;
+    @ColumnInfo
     public String mediaUrl;
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
@@ -45,6 +62,7 @@ public class Tweet {
         tweet.relativeTimeAgo = getRelativeTimeAgo(tweet.createdAt);
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
         tweet.id = jsonObject.getLong("id");
+        tweet.userId = tweet.user.id;
 
         if (jsonObject.getJSONObject("entities").has("media")) {
             JSONObject media = jsonObject.getJSONObject("entities").getJSONArray("media").getJSONObject(0);
