@@ -55,6 +55,16 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     @Override
     public int getItemCount() { return tweets.size(); }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
     // Clean all elements of the recycler
     public void clear() {
         tweets.clear();
@@ -74,6 +84,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView tvScreenName;
         TextView tvPostTime;
         RelativeLayout container;
+        ImageView ivMedia;
 
         public ViewHolder(@Nonnull View itemView) {
             super(itemView);
@@ -82,6 +93,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             tvPostTime = itemView.findViewById(R.id.tvPostTime);
             container = itemView.findViewById(R.id.container);
+            ivMedia = itemView.findViewById(R.id.ivMedia);
         }
 
         public void bind(final Tweet tweet) {
@@ -92,6 +104,15 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvPostTime.setText(tweet.relativeTimeAgo);
             tvScreenName.setText(tweet.user.screenName);
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
+            ivMedia.setImageDrawable(null);
+            ivMedia.setVisibility(View.GONE);
+            if (tweet.mediaUrl != null) {
+                Glide.with(context)
+                        .load(tweet.mediaUrl)
+                        .placeholder(R.drawable.ic_launcher)
+                        .into(ivMedia);
+                ivMedia.setVisibility(View.VISIBLE);
+            }
             // register click listener on the whole row (container)
             container.setOnClickListener(new View.OnClickListener() {
                 @Override
