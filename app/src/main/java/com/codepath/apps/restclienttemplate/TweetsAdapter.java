@@ -104,14 +104,14 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvPostTime.setText(tweet.relativeTimeAgo);
             tvScreenName.setText(tweet.user.screenName);
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
-            ivMedia.setImageDrawable(null);
-            ivMedia.setVisibility(View.GONE);
             if (tweet.mediaUrl != null) {
                 Glide.with(context)
                         .load(tweet.mediaUrl)
                         .placeholder(R.drawable.ic_launcher)
                         .into(ivMedia);
                 ivMedia.setVisibility(View.VISIBLE);
+            } else {
+                ivMedia.setVisibility(View.GONE);
             }
             // register click listener on the whole row (container)
             container.setOnClickListener(new View.OnClickListener() {

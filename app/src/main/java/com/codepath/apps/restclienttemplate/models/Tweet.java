@@ -1,6 +1,5 @@
 package com.codepath.apps.restclienttemplate.models;
 
-import android.provider.ContactsContract;
 import android.util.Log;
 
 import org.json.JSONArray;

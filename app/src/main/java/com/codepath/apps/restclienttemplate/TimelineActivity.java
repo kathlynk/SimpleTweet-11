@@ -136,6 +136,7 @@ public class TimelineActivity extends AppCompatActivity {
                 adapter.addAll(tweetsFromDB);
             }
         });
+
         populateHomeTimeline();
     }
 
@@ -173,7 +174,7 @@ public class TimelineActivity extends AppCompatActivity {
                     final List<Tweet> tweetsFromNetwork = Tweet.fromJsonArray(jsonArray);
                     adapter.clear();
                     adapter.addAll(tweetsFromNetwork);
-                    // Query for existing tweets in the DB
+                    // Save tweets to the DB
                     AsyncTask.execute(new Runnable() {
                         @Override
                         public void run() {
