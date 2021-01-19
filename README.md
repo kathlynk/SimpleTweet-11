@@ -35,7 +35,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![](https://i.imgur.com/89KE9Oz.gif)
+<blockquote class="imgur-embed-pub" lang="en" data-id="pawQ0F7"><a href="https://imgur.com/pawQ0F7">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 GIF created with [ShareX](https://getsharex.com).
 
